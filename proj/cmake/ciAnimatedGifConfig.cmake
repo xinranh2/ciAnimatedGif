@@ -1,13 +1,13 @@
 if(NOT TARGET ciAnimatedGif)
     # Define ${ciAnimatedGif_PROJECT_ROOT}. ${CMAKE_CURRENT_LIST_DIR} is just the current directory.
-    get_filename_component(Cinder-ciAnimatedGif_PROJECT_ROOT "${CMAKE_CURRENT_LIST_DIR}/../.." ABSOLUTE)
+    get_filename_component(ciAnimatedGif_SOURCE_PATH "${CMAKE_CURRENT_LIST_DIR}/../../src" ABSOLUTE)
 
     # Define ${CINDER_PATH} as usual.
-    get_filename_component(CINDER_PATH "${Cinder-ciAnimatedGif_PROJECT_ROOT}/../.." ABSOLUTE)
+    get_filename_component(CINDER_PATH "${CMAKE_CURRENT_LIST_DIR}/../../../.." ABSOLUTE)
 
     # Make a list of source files and define that to be ${SOURCE_LIST}.
     file(GLOB SOURCE_LIST CONFIGURE_DEPENDS
-            "${ciAnimatedGif_PROJECT_ROOT}/src/ciAnimatedGif.cpp"
+            "${ciAnimatedGif_SOURCEPATH}/ciAnimatedGif.cpp"
             )
 
     # Create the library!
@@ -16,7 +16,7 @@ if(NOT TARGET ciAnimatedGif)
     # Add include directories.
     # Notice that `cinderblock.xml` has `<includePath>src</includePath>`.
     # So you need to set `../../src/` to include.
-    target_include_directories(ciAnimatedGif PUBLIC "${ciAnimatedGif_PROJECT_ROOT}/src" )
+    target_include_directories(ciAnimatedGif PUBLIC "${ciAnimatedGif_SOURCE_PATH}/src" )
     target_include_directories(ciAnimatedGif SYSTEM BEFORE PUBLIC "${CINDER_PATH}/include" )
 
 
